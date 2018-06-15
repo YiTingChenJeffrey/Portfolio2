@@ -1,10 +1,22 @@
 const Handlebars = require('handlebars');
 
-Handlebars.registerHelper('bold', function(options){
+Handlebars.registerHelper('list', function (context, options) {
 
-    var test = new Handlebars.SafeString('<b>' + options.fn(this) + '</b>');
+    var list = '';
+    for (var i = 0; i < context.length; i++) {
+        list += options.fn(context[i]);
+    }
+    
+    return list;
+    
+});
 
-    return test;
+Handlebars.registerHelper('one', function (context, options) {
 
-
+    var list = '';
+    list += options.fn(context[0]);
+    
+    
+    return list;
+    
 });
